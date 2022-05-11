@@ -3,8 +3,7 @@
 //index.php
 
 include('database_connection.php');
-$query = 'SELECT catalogo.id, catalogo.descripcion, catalogo.codigo, catalogo.numserie, inventarioutl.qtyf FROM catalogo '  
-	. 'INNER JOIN inventarioutl ON catalogo.id = inventarioutl.herramienta WHERE inventarioutl.qtyf > 0';
+$query = 'SELECT * FROM catalogo';
 $result = mysqli_query($connect, $query);
 
 
@@ -17,10 +16,7 @@ $json = array();
 while($row = mysqli_fetch_array($result)){
     $json[] = array(
         'id' => $row['id'],
-        'descripcion' => $row['descripcion'],
-        'codigo' => $row['codigo'],
-        'numserie' => $row['numserie'],
-        'qtyf' => $row['qtyf']
+        'nombre' => $row['nombre'],
     );    
 }
 
