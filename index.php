@@ -180,15 +180,6 @@
 					</div>
 				</div>
 			</div> -->
-			<!--modal iframe -->
-			<div class="mb-4">
-							<iframe id="iframe-p"
-								title="Inline Frame Example"
-								width=1200
-								height=540
-								src="http://172.16.100.20:8000/ticket?ticket=2">
-							</iframe>
-						</div>
 
 
 
@@ -551,11 +542,6 @@ $(document).ready(function(){
 
 		$('#modalIframe').modal('show');
 	});
-
-
-	$('#iframe-id').on( 'load', function() {
-    // code will run after iframe has finished loading
-} );
 
 
 });
