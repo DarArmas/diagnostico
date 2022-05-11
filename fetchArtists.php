@@ -3,7 +3,7 @@
 //index.php
 
 include('database_connection.php');
-$query = 'SELECT * FROM catalogo';
+$query = 'SELECT * FROM artists';
 $result = mysqli_query($connect, $query);
 
 
@@ -16,7 +16,7 @@ $json = array();
 while($row = mysqli_fetch_array($result)){
     $json[] = array(
         'id' => $row['id'],
-        'nombre' => $row['nombre'],
+        'name' => $row['name'],
     );    
 }
 

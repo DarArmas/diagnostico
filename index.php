@@ -9,12 +9,16 @@
         <title>Select</title>
 		<link type="text/css" rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="jquery-editable-select.css" />
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	   <script src="jquery-editable-select.js"></script>
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -23,22 +27,48 @@
 	</head>
     <body>
         <div class="container mt-4">
-			<h3>Add your items</h3>
+			<h3>Add your favorite albums!</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<form method="post" id="sample_form">
-						<div class="form-group">
-						<label>Date:</label>
-							<input type="text" class="form-control" id="fecha" name="fecha" value="<?=date("d-m-Y",time());?>" disabled >
-						</div>
 						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" class="form-control" id="name" name="name">
 						</div>
 						<div class="form-group">
-							<label for="description">Description:</label>
-							<textarea class="form-control" id="description" name="description"></textarea>
+							<label>Artist:</label>
+							<div class="selDiv">
+								<select name="artist" id="artist_select" class="form-control" >
+									<option></option> <!--editable select debe al menos una opcion al momento de hacer focus-->
+								</select>
+							</div>
 						</div>
+						<div class="form-group">
+							<label for="year">Year:</label>
+							<input type="number" class="form-control" id="year" name="year">
+						</div>
+						<!-- <div class="form-group">
+							<label>Score:</label>
+								<select name="score" id="score_select" class="form-control" >
+								</select>
+						</div> -->
+						<p>Score:</p>
+
+							  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i>">
+							  <label><i class='fa-solid fa-star'></i></label><br>
+
+							  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
+							  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+
+							  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
+							  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+
+							  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
+							  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+							
+							  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
+							  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+
 						
 						<div class="d-flex align-items-end">
 							<div class="form-group">
@@ -58,7 +88,7 @@
 					<br />
 				</div> <!--.col-md-4-->
 
-				<div class="d-flex flex-column col-md-6">
+				<div class="d-flex flex-column col-md-8">
 					<div class="table-wrapper-scroll-y my-custom-scrollbar p-3">
 						<div class="table-responsive" >
 							<table class="table table-bordered" id="tabla-seleccionados" >
@@ -89,10 +119,6 @@
 								</tbody>
 							</table>
 						</div>
-					</div>
-					<div class="">
-						<button type="button" id="btnFlush" class="btn btn-primary ml-3">Flush selection</button>
-						<button type="button" id="btnPrestamo" class="btn btn-success">Add items</button>
 					</div>
 				</div>
 			</div>
