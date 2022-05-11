@@ -1,0 +1,37 @@
+
+/* añador scrollbar a tabla */
+.my-custom-scrollbar {
+position: relative;
+max-height: 400px;
+overflow: auto;
+}
+
+
+.table-wrapper-scroll-y {
+display: block;
+padding: 10px;
+}
+
+.es-list li{
+    cursor: pointer !important;
+}
+
+.disabled {
+    pointer-events:none !important; 
+    opacity:0.6 !important;         
+}
+
+#tabla-seleccionados td,
+#tabla-seleccionados th{
+    text-align: center; 
+    vertical-align: middle;
+    font-size: 14px;
+    padding: 10px 2px 10px;
+}
+
+.modal-xl{
+    width: 90% !important;
+    max-width: 1200px !important;
+}
+
+
