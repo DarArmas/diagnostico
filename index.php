@@ -1,6 +1,10 @@
 <?php
 	date_default_timezone_set('America/Monterrey');
+
+	include('fetch.php');
 ?>
+
+
 
 <html>
     <head>
@@ -37,23 +41,23 @@
 					<form method="post" id="sample_form">
 						<div class="form-group">
 							<label for="name">Name:</label>
-							<input type="text" class="form-control" id="name" name="name">
+							<input type="text" class="form-control" id="name" name="name" required>
 						</div>
 						<div class="form-group">
 							<label>Artist:</label>
 							<div class="selDiv">
-								<select name="artist" id="artist_select" class="form-control" >
+								<select name="artist" id="artist_select" class="form-control" required>
 									<option></option> <!--editable select debe al menos una opcion al momento de hacer focus-->
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="year">Year:</label>
-							<input type="number" class="form-control" id="year" name="year">
+							<input type="number" class="form-control" id="year" name="year" required>
 						</div>
 						<div class="form-group">
 							<p>Score:</p>
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i>">
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i>" required>
 								  <label><i class='fa-solid fa-star'></i></label><br>
 
 								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">

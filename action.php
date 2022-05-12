@@ -4,7 +4,7 @@
 include('database_connection.php');
 
 
-if(isset($_POST["codigo_serie"]))
+if(isset($_POST))
 {	
 	$codigo_serie = $_POST["codigo_serie"];
 
