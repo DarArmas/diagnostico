@@ -1,10 +1,7 @@
 <?php
 	date_default_timezone_set('America/Monterrey');
-
-	include('fetch.php');
+	require_once('database_connection.php');
 ?>
-
-
 
 <html>
     <head>
@@ -38,7 +35,7 @@
 			<h3>Add your favorite albums!</h3>
 			<div class="row">
 				<div class="col-md-3">
-					<form method="post" id="sample_form">
+					<form method="post" id="album-form">
 						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" class="form-control" id="name" name="name" required>
@@ -81,8 +78,6 @@
 						<div class="row">
 							<div class="col-sm-4"></div>
 							<div class="form-group col-sm-8">
-								<input type="hidden" name="action" id="action" value="add" />
-								<input type="hidden" name="hidden_id" id="hidden_id" value="" />
 								<button type="submit" title="Add a new album" name="Save" id="save" class="btn btn-success" value="Save">
 									Add Album
 								</button>
@@ -98,16 +93,16 @@
 						<div class="table-responsive" >
 							<table class="table table-striped table-bordered" id="data-table" >
 							<colgroup>
-							<col span="1" style="width: 20%;">
+							<col span="1" style="width: 15%;">
 							<col span="1" style="width: 15%;">
 							<col span="1" style="width: 5%;">
-							<col span="1" style="width: 10%;">
+							<col span="1" style="width: 2%;">
 							<col span="1" style="width: 10%;">
 							<col span="1" style="width: 5%;">
     						</colgroup>
 								<thead>
 									<tr>
-										<th>Image</th>
+										<th class="no-sort"></th>
 										<th>Name</th>
 										<th>Artist</th>
 										<th>Year</th>
@@ -116,15 +111,36 @@
 									</tr>
 								</thead>
 								<tbody>
+								<?php 
+									$sql = "SELECT albums.name, artists.name AS artist, albums.year, albums.score, albums.image FROM albums INNER JOIN artists ON albums.artist_id = artists.id";
+									$results = mysqli_query($connect, $sql);
+									$albums = array();
+									if($results && mysqli_num_rows($results) >= 1){
+										$albums = $results;
+									}
+										if(!empty($albums)):
+											while($album = mysqli_fetch_assoc($albums)):
+												
+									?>
 									<tr>
-										<td>Hola</td>
-										<td>Hola</td>
-										<td>Hola</td>
-										<td>Hola</td>
-										<td><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></td>
-										<td>Hola</td>
+										<td></td>
+										<td><?= $album['name']?></td>
+										<td><?= $album['artist']?></td>
+										<td><?= $album['year']?></td>
+										<td><?= $album['score']?></td>
+										<td>
+											<a href="edit.php" class="edit-album">
+												<i class="fas fa-edit"></i>
+											</a>
+											<a href="delete.php" class="delete-album">
+												<i class="text-danger fas fa-trash"></i>
+											</a>
+										</td>
 									</tr>
-									
+								<?php
+										endwhile;
+									endif;
+								?>
 								</tbody>
 							</table>
 						</div>
@@ -133,32 +149,6 @@
 				<!--END TABLE ALBUMS-->
 
 			</div>
-
-			<br />
-			<br />
-			<br />
-			<!-- MODAL DELETE -->
-			<div class="modal fade" id="confirmHer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-					<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Vaciar lista</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						¿Desea vaciar la lista de herramientas seleccionadas?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" id="btnConfirmHer" name="btnConfirmHer" class="btn btn-primary">Eliminar</button>
-					</div>
-					</div>
-				</div>
-			</div>
-			<!--END MODAL DELETE-->
 		</div>
     </body>
 </html>

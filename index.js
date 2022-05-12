@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$(document).tooltip();
 
 	$('#artist_select').editableSelect();
-	$('#data-table').DataTable({
+	table = $('#data-table').DataTable({
 		columnDefs: [
             {
                 orderable: false,
@@ -54,15 +54,42 @@ $(document).ready(function(){
 
 
 	//submit - agregar herramienta a la lista
-	$('#sample_form').on('submit', function(e){
+	$('#album-form').on('submit', function(e){
+		e.preventDefault();
+		const data = $(this).serialize();
+		const artist_selected = $('#artist_select').val();
 		
+		// const data = {
+        //     artist_selected: $('#artist_select').val()
+        // };
+		$.ajax({
+				url:"create.php",
+				method:"POST",
+				data: {data, artist_selected: artist_selected},
+				//enviar el codigo o serie de 
+				error: function() {
+					toastr.error('Hubo un error en la parte del servidor', 'Error', {timeOut: 3000});
+					return false;
+				},
+				success:function(response)
+				{
+					console.log(response);
+					table.destroy();
+					table = $('#data-table').DataTable();
+				},
+			});
+		}
+	);
 
-	});
+
 
 
 //delete album
-	$(document).on('click', '.delete', function(){
+	$(document).on('click', '.delete-al', function(){
 		
 	});
+
+    
+
 
 });

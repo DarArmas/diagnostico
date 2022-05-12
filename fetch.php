@@ -7,7 +7,7 @@ include('database_connection.php');
 $query = "SELECT * FROM albums ORDER BY id DESC";
 $statement = $connect->prepare($query);
 $statement->execute();
-$result = $statement->fetchAll();
+//$result = $statement->fetchAll();
 // $total_row = $statement->rowCount();
 // $output = '';
 // if($total_row > 0)
