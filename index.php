@@ -49,6 +49,9 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<input type="hidden" class="form-control" id="artist_string" name="artist_string" required>
+						</div>
+						<div class="form-group">
 							<label for="year">Year:</label>
 							<input type="number" class="form-control" id="year" name="year" required>
 						</div>

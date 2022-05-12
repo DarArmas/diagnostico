@@ -52,12 +52,18 @@ $(document).ready(function(){
 		listArtists();
 	});
 
+	$('#artist_select').on('change', function () {
+        $('#artist_string').val($('#artist_select').val());
+    });
+
+	$('#artist_select').on('focusout', function () {
+        $('#artist_string').val($('#artist_select').val());
+    });
 
 	//submit - agregar herramienta a la lista
 	$('#album-form').on('submit', function(e){
 		e.preventDefault();
 		const data = $(this).serialize();
-		const artist_selected = $('#artist_select').val();
 		
 		// const data = {
         //     artist_selected: $('#artist_select').val()
@@ -65,7 +71,7 @@ $(document).ready(function(){
 		$.ajax({
 				url:"create.php",
 				method:"POST",
-				data: {data, artist_selected: artist_selected},
+				data: data,
 				//enviar el codigo o serie de 
 				error: function() {
 					toastr.error('Hubo un error en la parte del servidor', 'Error', {timeOut: 3000});

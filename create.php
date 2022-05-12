@@ -11,8 +11,10 @@ if(isset($_POST)){
     
 
     //echo $_POST["artist_selected"];
-    echo $_POST["artist_selected"];
+    $result = json_encode($_POST);
+    echo $result;
     die();
+
 
     if(!empty($name) && !empty($year) && !empty($score) ){
         echo "estoy entrando";
