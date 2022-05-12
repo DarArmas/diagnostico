@@ -2,9 +2,16 @@ $(document).ready(function(){
 	$(document).tooltip();
 
 	$('#artist_select').editableSelect();
+	$('#data-table').DataTable({
+		columnDefs: [
+            {
+                orderable: false,
+                targets: 'no-sort',
+            }
+        ],
+	});
 
 	function listArtists(){
-		console.log("hola mundo");
 			$.ajax({
             url: 'fetchArtists.php',
             type: 'GET',
@@ -33,19 +40,17 @@ $(document).ready(function(){
 		listArtists();
 	});
 	
-	//cambiar placeholder de campo cantidad dinamicamente
-	$('#herramienta_select').focusout(function(e){
-		e.preventDefault();
-		var herramienta_input = $('#herramienta_select').val();
-		if(herramienta_input !== ''){
-			var herramienta_codigo = herramienta_input.split(' | ')[1].substring(1);
-			placeholderMax(herramienta_codigo);
-		}else{
-			//si no se selecciona nada, quita el ultimo placeholder
-			$('#cantidad_input').prop("placeholder", "");
-		}
-		
-	})
+	$('#image').fileinput({
+        allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+        maxFileSize: 1000,
+        showUpload: false,
+        showClose: false,
+        dropZoneEnabled: false,
+        showCaption: false,
+        showCancel: false,
+        initialPreviewAsData: true,
+        theme: "fas",
+    });
 
 	//submit - agregar herramienta a la lista
 	$('#sample_form').on('submit', function(e){
