@@ -52,13 +52,13 @@ $(document).ready(function(){
 		listArtists();
 	});
 
-	$('#artist_select').on('change', function () {
-        $('#artist_string').val($('#artist_select').val());
-    });
+	// $('#artist_select').on('change', function () {
+    //     $('#artist_string').val($('#artist_select').val());
+    // });
 
-	$('#artist_select').on('focusout', function () {
-        $('#artist_string').val($('#artist_select').val());
-    });
+	// $('#artist_select').on('focusout', function () {
+    //     $('#artist_string').val($('#artist_select').val());
+    // });
 
 	//submit - agregar herramienta a la lista
 	$('#album-form').on('submit', function(e){
