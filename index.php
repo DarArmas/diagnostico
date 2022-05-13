@@ -46,11 +46,12 @@
 								<select name="artist" id="artist_select" class="form-control" required>
 									<option></option> <!--editable select debe al menos una opcion al momento de hacer focus-->
 								</select>
+								<small>You can type if it doesn't exist.</small>
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<input type="hidden" class="form-control" id="artist_string" name="artist_string" required>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="year">Year:</label>
 							<input type="number" class="form-control" id="year" name="year" required>
@@ -69,8 +70,8 @@
 								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
 								  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
 								
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
-								  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star '></i><i class='fa-solid fa-star'></i>">
+								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
 						<div class="form-group row">
 							<div>

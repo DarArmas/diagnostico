@@ -1,6 +1,4 @@
 <?php
-
-//index.php
 if(isset($_POST)){
     require_once('database_connection.php');
 
@@ -22,16 +20,15 @@ if(isset($_POST)){
         $artist = mysqli_insert_id($connect);
     }
 
-
-    if(!empty($name) && !empty($year) && !empty($score) ){
-        echo "estoy entrando";
-        $sql= "INSERT INTO albums VALUES(NULL, '$name', 3, '$year', '$score', NULL);";
-        $guardar = mysqli_query($connect, $sql);
-        // $result = mysqli_error($connect);
-        // echo ($result);
-        // die();
+    if(!empty($name) && !empty($artist) && !empty($year) && !empty($score) ){
+        $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', NULL);";
+        $save = mysqli_query($connect, $sql);
+        if($save){
+            echo "Album added to your list";
+        }
     }
-     echo "Album added to your list";
+
+    //echo "Album added to your list";
  }
 
 ?>

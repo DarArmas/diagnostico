@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$(document).tooltip();
 
 	$('#artist_select').editableSelect();
-	table = $('#data-table').DataTable({
+	var table = $('#data-table').DataTable({
 		columnDefs: [
             {
                 orderable: false,
@@ -80,8 +80,6 @@ $(document).ready(function(){
 				success:function(response)
 				{
 					console.log(response);
-					table.destroy();
-					table = $('#data-table').DataTable();
 				},
 			});
 		}

@@ -6,7 +6,7 @@ select {
 /* añador scrollbar a tabla */
 .my-custom-scrollbar {
 position: relative;
-max-height: 400px;
+max-height: 800px;
 overflow: auto;
 }
 
