@@ -2,6 +2,8 @@
 	date_default_timezone_set('America/Monterrey');
 	require_once('database_connection.php');
 	require_once('helper.php');    
+
+
 ?>
 
 <html>
@@ -22,6 +24,7 @@
 		
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha512-Ua/7Woz9L5O0cwB/aYexmgoaD7lw3dWe9FvXejVdgqu71gRog3oJgjSWQR55fwWx+WKuk8cl7UwA1RS6QCadFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	   <script src="jquery-editable-select.js"></script>
@@ -29,14 +32,27 @@
 	 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>  
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.8/js/fileinput.min.js" integrity="sha512-cp6gW0UKPFR63zDk2rrGFtTyFo+VXo3VYWPOVh53Zb9gXYH8weGogFhKgkb5zski616au/uX6uMryLcaHis9MA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	  
+	  	
+
 	</head>
     <body>
         <div class="container mt-4">
+		<?php if(isset($_SESSION['user'])): ?>
+			<div class="float-right">
+				<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Welcome: <?=$_SESSION['user']['name']?>
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="logout.php">Logout</a>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
 			<h3>Add your favorite albums!</h3>
 			<div class="row">
 				<div class="col-md-3">
-					<form method="post" id="album-form-edit">
+					<form method="post" id="album-form">
 						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" class="form-control" id="name" name="name" required>
@@ -83,9 +99,15 @@
 						<div class="row">
 							<div class="col-sm-4"></div>
 							<div class="form-group col-sm-8">
+							<?php if(isset($_SESSION['user'])): ?>
 								<button type="submit" title="Add a new album" name="Save" id="save" class="btn btn-success" value="Save">
 									Add Album
 								</button>
+								<?php else: ?>
+								<a id="open-login" class="btn btn-success">
+									Add Album
+								</a>
+								<?php endif; ?>
 							</div>
 						</div>
 					</form>
@@ -147,16 +169,7 @@
 					</div>
 				</div>
 				<!--END TABLE ALBUMS-->
-				<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-body">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-
+				<?php require_once 'modal-login.php'?>
 			</div>
 		</div>
     </body>

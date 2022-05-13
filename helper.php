@@ -1,4 +1,8 @@
 <?php
+	if(!isset($_SESSION)){
+		session_start();    
+		}
+
 function fetchAlbums($connect){
     $sql = "SELECT albums.id, albums.name, artists.name AS artist, albums.year, albums.score, albums.image FROM albums INNER JOIN artists ON albums.artist_id = artists.id ORDER BY id DESC";
     $results = mysqli_query($connect, $sql);

@@ -52,6 +52,11 @@ $(document).ready(function(){
 		listArtists();
 	});
 
+	$(document).on('click', '#open-login', function(e){
+		e.preventDefault();
+		$('#modal-login').modal('show');
+	});
+
 	//submit
 	$('#album-form').on('submit', function(e){
 		e.preventDefault();
