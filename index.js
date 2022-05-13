@@ -74,12 +74,12 @@ $(document).ready(function(){
 				},
 				success:function(response)
 				{
-					console.log(response);
-					// toastr.success('New album added to your list', 'Success', {timeOut: 3000});
-					// $('#album-form')[0].reset();
-					// table.destroy();
-					// $('#data-table tbody').html(response);
-					// table = $('#data-table').DataTable();
+					//console.log(response);
+					toastr.success('New album added to your list', 'Success', {timeOut: 3000});
+					$('#album-form')[0].reset();
+					table.destroy();
+					$('#data-table tbody').html(response);
+					table = $('#data-table').DataTable();
 				},
 			});
 		}

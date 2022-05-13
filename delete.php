@@ -13,8 +13,9 @@ if(isset($_POST) && !empty($_POST['id'])){
             $table = '';
                 if(!empty($albums)){
                     while($album = mysqli_fetch_assoc($albums)){
+                        $image = !empty($album['image']) ? $album['image'] : 'default.jpg';
                         $table .= "<tr>";
-                        $table .= "<td></td>";
+                        $table .= "<td><img src='./assets/images/$image' height='100px'/></td>";
                         $table .= "<td>".$album['name']."</td>";
                         $table .= "<td>".$album['artist']."</td>";
                         $table .= "<td>".$album['year']."</td>";
