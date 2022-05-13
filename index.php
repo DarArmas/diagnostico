@@ -70,7 +70,7 @@
 								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
 								  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
 								
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star '></i><i class='fa-solid fa-star'></i>">
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
 						<div class="form-group row">

@@ -24,7 +24,34 @@ if(isset($_POST)){
         $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', NULL);";
         $save = mysqli_query($connect, $sql);
         if($save){
-            echo "Album added to your list";
+            $sql = "SELECT albums.name, artists.name AS artist, albums.year, albums.score, albums.image FROM albums INNER JOIN artists ON albums.artist_id = artists.id";
+            $results = mysqli_query($connect, $sql);
+            $albums = array();
+            if($results && mysqli_num_rows($results) >= 1){
+                $albums = $results;
+            }
+            $table = '';
+                if(!empty($albums)){
+                    while($album = mysqli_fetch_assoc($albums)){
+                        $table .= "<tr>";
+                        $table .= "<td></td>";
+                        $table .= "<td>".$album['name']."</td>";
+                        $table .= "<td>".$album['artist']."</td>";
+                        $table .= "<td>".$album['year']."</td>";
+                        $table .= "<td>".$album["score"]."</td>";
+                        $table .= '<td>
+										<a href="edit.php" class="edit-album">
+												<i class="fas fa-edit"></i>
+											</a>
+											<a href="delete.php" class="delete-album">
+												<i class="text-danger fas fa-trash"></i>
+											</a>
+										</td>
+									</tr>';
+                    }
+                }
+            echo $table;
+
         }
     }
  }
