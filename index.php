@@ -36,7 +36,7 @@
 			<h3>Add your favorite albums!</h3>
 			<div class="row">
 				<div class="col-md-3">
-					<form method="post" id="album-form">
+					<form method="post" id="album-form-edit">
 						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" class="form-control" id="name" name="name" required>
@@ -59,27 +59,27 @@
 						</div>
 						<div class="form-group">
 							<p>Score:</p>
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i>" required>
-								  <label><i class='fa-solid fa-star'></i></label><br>
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i>" required>
+								  <label><i class='fa-solid fa-star text-warning'></i></label><br>
 
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
-								  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
-								  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i>">
-								  <label><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></label><br>
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 								
 								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
-						<div class="form-group row">
+						<!-- <div class="form-group row">
 							<div>
 							<label for="image">Image: </label>
 								<input type="file" name="image" id="image" data-initial-preview="" accept="image/*"/>
 							</div>
-						</div>
+						</div> -->
 						<div class="row">
 							<div class="col-sm-4"></div>
 							<div class="form-group col-sm-8">
@@ -128,9 +128,10 @@
 										<td><?= $album['year']?></td>
 										<td><?= $album['score']?></td>
 										<td>
-											<a href="edit.php" class="edit-album">
+										<a href="edit.php?id=<?=$album['id']?>" class="edit-album"><i class="fas fa-edit"></i></a>
+											<!-- <a href="edit.php" class="edit-album" id="<?=$album['id']?>">
 												<i class="fas fa-edit"></i>
-											</a>
+											</a> -->
 											<a href="delete.php" class="delete-album" id="<?=$album['id']?>">
 												<i class="text-danger fas fa-trash"></i>
 											</a>
@@ -146,6 +147,15 @@
 					</div>
 				</div>
 				<!--END TABLE ALBUMS-->
+				<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-body">
+								
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</div>
 		</div>

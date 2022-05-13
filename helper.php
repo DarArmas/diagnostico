@@ -24,4 +24,16 @@ function getAlbum($connect,$id){
     
     return $return;
 }
+
+function fetchArtists($connect){
+    $sql = "SELECT * FROM artists";
+    $artists = mysqli_query($connect, $sql);
+    $result = array();
+    
+    if($artists && mysqli_num_rows($artists) >= 1){
+        $result = $artists;
+    }
+    
+    return $result;
+}
 ?>

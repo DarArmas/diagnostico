@@ -19,9 +19,7 @@ if(isset($_POST) && !empty($_POST['id'])){
                         $table .= "<td>".$album['year']."</td>";
                         $table .= "<td>".$album["score"]."</td>";
                         $table .= '<td>
-										<a href="edit.php" class="edit-album">
-												<i class="fas fa-edit"></i>
-											</a>
+                                    <a href="edit.php?id='.$album['id'].'" class="edit-album"><i class="fas fa-edit"></i></a>
 											<a href="delete.php" class="delete-album" id='.$album['id'].'> 
 												<i class="text-danger fas fa-trash"></i>
 											</a>

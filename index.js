@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$(document).tooltip();
-
+	
 	$('#artist_select').editableSelect();
 	var table = $('#data-table').DataTable({
 		columnDefs: [
@@ -76,22 +76,36 @@ $(document).ready(function(){
 		}
 	);
 
-	$(document).on('click', '.task-delete', function(){
-        
-       
- 
-    }); 
+	// $(document).on('click', '.edit-album', function(e){
+    //     e.preventDefault();
+	// 	let id = $(this).attr('id');
+	// 	 let action = $(this).attr('href');
+	// 	$.ajax({
+	// 		url: action,
+	// 		method:"POST",
+	// 		data: {id:id},
+	// 		error: function() {
+	// 			toastr.error('There was a problem with the server', 'Error', {timeOut: 3000});
+	// 			return false;
+	// 		},
+	// 		success:function(response)
+	// 		{
+	// 			//console.log(response);
+	// 			$('#modal-edit .modal-body').html(response);
+	// 			$('#modal-edit').modal('show');
+	// 		},
+	// 	});
+    // }); 
 
 
 //delete album
 	$(document).on('click', '.delete-album', function(e){
 		e.preventDefault();
 		 if(confirm('Are you sure you want to delete this album')){
-		 let anchor = $(this);
-		 let id = $(anchor).attr('id');
-		 let action = $(anchor).attr('href');
+		 let id = $(this).attr('id');
+		 let action = $(this).attr('href');
 		 $.ajax({
-			url:"delete.php",
+			url: action,
 			method:"POST",
 			data: {id:id},
 			error: function() {
@@ -100,7 +114,6 @@ $(document).ready(function(){
 			},
 			success:function(response)
 			{
-				// console.log(response);
 				toastr.success('Album deleted', 'Success', {timeOut: 3000});
 				table.destroy();
 				$('#data-table tbody').html(response);
