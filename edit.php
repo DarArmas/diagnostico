@@ -8,6 +8,8 @@ require_once('cabecera.php');
                 if(!isset($album['id']) || !isset($_SESSION['user'])){
                     header("Location: index.php");   
                 }
+				$image = !empty($album['image']) ? $album['image'] : 'default.jpg';
+				$image_route = './assets/images/'.$image;
 ?> 
 			<h3>Edit album: <?=$album['name']?></h3>
 			<div class="row">
@@ -63,12 +65,12 @@ require_once('cabecera.php');
                         <?php echo ($album['score'] == "<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" ? "checked" : '') ?> >
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
-						<!-- <div class="form-group row">
+						<div class="form-group row">
 							<div>
 							<label for="image">Image: </label>
-								<input type="file" name="image" id="image" data-initial-preview="" accept="image/*"/>
+								<input type="file" name="image" id="image" data-initial-preview="<?= $image_route ?>" accept="image/*"/>
 							</div>
-						</div> -->
+						</div>
 						<div class="row float-left">
 							<div class="form-group col-sm-12 mr-3">
 								<button type="submit" title="Add a new album" name="Save" id="save" class="btn btn-success" value="Save">
@@ -93,7 +95,7 @@ require_once('cabecera.php');
 						<div class="table-responsive" >
 							<table class="table table-striped table-bordered" id="data-table" >
 							<colgroup>
-							<col span="1" style="width: 15%;">
+							<col span="1" style="width: 1%;">
 							<col span="1" style="width: 15%;">
 							<col span="1" style="width: 5%;">
 							<col span="1" style="width: 2%;">
@@ -115,18 +117,16 @@ require_once('cabecera.php');
 									$albums = fetchAlbums($connect);
 										if(!empty($albums)):
 											while($album = mysqli_fetch_assoc($albums)):
+												$image = !empty($album['image']) ? $album['image'] : 'default.jpg';
 									?>
 									<tr>
-										<td></td>
+										<td><img src="./assets/images/<?= $image ?>" height="100px"/></td>
 										<td><?= $album['name']?></td>
 										<td><?= $album['artist']?></td>
 										<td><?= $album['year']?></td>
 										<td><?= $album['score']?></td>
 										<td>
 										<a href="edit.php?id=<?=$album['id']?>" class="edit-album"><i class="fas fa-edit"></i></a>
-											<!-- <a href="edit.php" class="edit-album" id="<?=$album['id']?>">
-												<i class="fas fa-edit"></i>
-											</a> -->
 											<a href="delete.php" class="delete-album" id="<?=$album['id']?>">
 												<i class="text-danger fas fa-trash"></i>
 											</a>

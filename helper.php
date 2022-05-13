@@ -1,6 +1,5 @@
 <?php
 
-    define('base_url', 'http://localhost:8080/examen-diagnostico/');
 
 	if(!isset($_SESSION)){
 		session_start();    
