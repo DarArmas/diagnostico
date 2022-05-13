@@ -7,6 +7,9 @@ if(isset($_POST)){
     $artist_string = isset($_POST['artist']) ? strtolower(mysqli_real_escape_string($connect, $_POST['artist'])) : false;
     $year = isset($_POST['year']) ? mysqli_real_escape_string($connect, $_POST['year']) : false;
     $score = isset($_POST['score']) ? mysqli_real_escape_string($connect, $_POST['score']) : false;
+
+    echo json_encode($_FILES['image']);
+    die();
     
     if(isset($_GET['edit'])){
         $artist = isset($_POST['artist']) ? $_POST['artist'] : false;

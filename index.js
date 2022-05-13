@@ -64,44 +64,26 @@ $(document).ready(function(){
 		$.ajax({
 				url:"create.php",
 				method:"POST",
-				data: data,
+				data: new FormData(this),
+				contentType: false,
+				cache: false,
+		  		processData:false,
 				error: function() {
 					toastr.error('There was a problem with the server', 'Error', {timeOut: 3000});
 					return false;
 				},
 				success:function(response)
 				{
-					toastr.success('New album added to your list', 'Success', {timeOut: 3000});
-					$('#album-form')[0].reset();
-					table.destroy();
-					$('#data-table tbody').html(response);
-					table = $('#data-table').DataTable();
+					console.log(response);
+					// toastr.success('New album added to your list', 'Success', {timeOut: 3000});
+					// $('#album-form')[0].reset();
+					// table.destroy();
+					// $('#data-table tbody').html(response);
+					// table = $('#data-table').DataTable();
 				},
 			});
 		}
 	);
-
-	// $(document).on('click', '.edit-album', function(e){
-    //     e.preventDefault();
-	// 	let id = $(this).attr('id');
-	// 	 let action = $(this).attr('href');
-	// 	$.ajax({
-	// 		url: action,
-	// 		method:"POST",
-	// 		data: {id:id},
-	// 		error: function() {
-	// 			toastr.error('There was a problem with the server', 'Error', {timeOut: 3000});
-	// 			return false;
-	// 		},
-	// 		success:function(response)
-	// 		{
-	// 			//console.log(response);
-	// 			$('#modal-edit .modal-body').html(response);
-	// 			$('#modal-edit').modal('show');
-	// 		},
-	// 	});
-    // }); 
-
 
 //delete album
 	$(document).on('click', '.delete-album', function(e){

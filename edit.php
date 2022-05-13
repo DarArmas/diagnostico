@@ -10,7 +10,7 @@ require_once('cabecera.php');
                     header("Location: index.php");   
                 }
 ?> 
-			<h3>Edit album <?=$album['name']?></h3>
+			<h3>Edit album: <?=$album['name']?></h3>
 			<div class="row">
 				<div class="col-md-3">
 					<form  id="album-form-edit" action="create.php?edit=<?=$album['id']?>" method="post">

@@ -4,7 +4,7 @@ require_once('cabecera.php')
 			<h3>Add your favorite albums!</h3>
 			<div class="row">
 				<div class="col-md-3">
-					<form method="post" id="album-form">
+					<form method="post" id="album-form" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" class="form-control" id="name" name="name" required  <?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?> >
@@ -47,12 +47,12 @@ require_once('cabecera.php')
 								<?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
-						<!-- <div class="form-group row">
+						<div class="form-group row">
 							<div>
 							<label for="image">Image: </label>
-								<input type="file" name="image" id="image" data-initial-preview="" accept="image/*"/>
+								<input type="file" name="image" id="image" data-initial-preview="" />
 							</div>
-						</div> -->
+						</div>
 						<div class="row">
 							<div class="col-sm-4"></div>
 							<div class="form-group col-sm-8">
