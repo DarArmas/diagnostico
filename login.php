@@ -1,6 +1,4 @@
 <?php
-
-
 require_once 'database_connection.php';
 
 $name = "admin";
@@ -18,8 +16,12 @@ if(isset($_POST)){
         $user = array("name"=>$name, "email"=>$email_user);
         $_SESSION['user'] = $user;
         header("Location: index.php");
+        if(isset($_SESSION['error'])){
+            session_unset($_SESSION['error']);
+        }
+    }else{
+        $_SESSION['error'] = "Incorrect password";
+        header("Location: index.php");
     }
-    
 }
-
 ?>

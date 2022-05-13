@@ -60,11 +60,16 @@ require_once('cabecera.php')
 								<button type="submit" title="Add a new album" name="Save" id="save" class="btn btn-success" value="Save">
 									Add Album
 								</button>
-								<?php else: ?>
+							<?php else: ?>
 								<a id="open-login" class="btn btn-success" title="You have to log in first">
 									Add Album
-								</a></br>
+								</a>
+								<?php if(isset($_SESSION['error'])): ?> 
+									<div class="text-danger  p-3">
+										<?= $_SESSION['error']; ?>
+									</div>
 								<?php endif; ?>
+							<?php endif; ?>
 							</div>
 						</div>
 					</form>
