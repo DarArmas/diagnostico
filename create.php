@@ -7,9 +7,20 @@ if(isset($_POST)){
     $artist_string = isset($_POST['artist']) ? strtolower(mysqli_real_escape_string($connect, $_POST['artist'])) : false;
     $year = isset($_POST['year']) ? mysqli_real_escape_string($connect, $_POST['year']) : false;
     $score = isset($_POST['score']) ? mysqli_real_escape_string($connect, $_POST['score']) : false;
+    $photo = NULL;
 
-    echo json_encode($_FILES['image']);
-    die();
+    $file = $_FILES['image'];
+    $file_name = $file['name'];
+    $type =$file['type'];
+
+    if($type == "image/jpg" || $type == "image/jpeg" || $type == "image/png" || $type == "image/gif"){
+        if(!is_dir('assets/images')){     
+            mkdir('assets/images',0777);
+        }
+        move_uploaded_file($file['tmp_name'], 'assets/images/'.$file_name);
+        $photo = $file_name;
+    }
+
     
     if(isset($_GET['edit'])){
         $artist = isset($_POST['artist']) ? $_POST['artist'] : false;
@@ -20,11 +31,9 @@ if(isset($_POST)){
         if($update){
             header("Location: index.php");
         }
-
     }else{
         $sql = "SELECT * FROM artists WHERE name = '$artist_string'";
         $artist_id = mysqli_query($connect, $sql);
-    
         $artist = '';
         if($artist_id && mysqli_num_rows($artist_id) >= 1){
             $artist_id = mysqli_fetch_assoc($artist_id);
@@ -35,8 +44,8 @@ if(isset($_POST)){
             $artist = mysqli_insert_id($connect);
         }
     
-        if(!empty($name) && !empty($artist) && !empty($year) && !empty($score) ){
-            $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', NULL);";
+        if(!empty($name) && !empty($artist) && !empty($year) && !empty($score)){
+            $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', '$photo');";
             $save = mysqli_query($connect, $sql);
             if($save){
                 $albums = fetchAlbums($connect);
