@@ -108,7 +108,7 @@ require_once('cabecera.php')
 												$image = !empty($album['image']) ? $album['image'] : 'default.jpg';
 									?>
 									<tr>
-										<td><img src="/examen-diagnostico/assets/images/<?= $image ?>" height="100px"/></td>
+										<td><img src="./assets/images/<?= $image ?>" height="100px"/></td>
 										<td><?= $album['name']?></td>
 										<td><?= $album['artist']?></td>
 										<td><?= $album['year']?></td>
