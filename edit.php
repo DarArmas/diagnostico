@@ -14,7 +14,7 @@ require_once('cabecera.php');
 			<h3>Edit album: <?=$album['name']?></h3>
 			<div class="row">
 				<div class="col-md-3">
-					<form  id="album-form-edit" action="create.php?edit=<?=$album['id']?>" method="post">
+					<form  id="album-form-edit" action="create.php?edit=<?=$album['id']?>" method="post" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" class="form-control" id="name" name="name" value="<?=$album['name']?>" required>
@@ -62,7 +62,7 @@ require_once('cabecera.php');
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 								
 								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>"
-                        <?php echo ($album['score'] == "<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" ? "checked" : '') ?> >
+                        		<?php echo ($album['score'] == "<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" ? "checked" : '') ?> >
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
 						<div class="form-group row">

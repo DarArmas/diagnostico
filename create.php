@@ -25,8 +25,14 @@ if(isset($_POST)){
     if(isset($_GET['edit'])){
         $artist = isset($_POST['artist']) ? $_POST['artist'] : false;
         $id_album = $_GET['edit'];
-        $sql= "UPDATE albums SET name='$name', artist_id=$artist, year='$year', score='$score'".
-        "WHERE id=$id_album";
+        if(!empty($photo)){
+            $sql= "UPDATE albums SET name='$name', artist_id=$artist, year='$year', score='$score', image='$photo'".
+            "WHERE id=$id_album";
+        }else{
+            $sql= "UPDATE albums SET name='$name', artist_id=$artist, year='$year', score='$score'".
+            "WHERE id=$id_album";
+        }
+      
         $update = mysqli_query($connect, $sql);
         if($update){
             header("Location: index.php");
