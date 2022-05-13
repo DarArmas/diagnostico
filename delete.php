@@ -3,7 +3,8 @@ if(isset($_POST) && !empty($_POST['id'])){
     require_once('database_connection.php');
     require_once('helper.php');
 
-    $id = $_POST['id'];
+    if(isset($_SESSION['user'])){
+        $id = $_POST['id'];
     if($id){
         $sql = "DELETE FROM albums where id =$id";
         $delete = mysqli_query($connect, $sql);
@@ -29,5 +30,9 @@ if(isset($_POST) && !empty($_POST['id'])){
                 }
             echo $table;
         }
+        }
     }
+    
+
+   
 }

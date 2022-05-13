@@ -1,20 +1,18 @@
 <?php
 require_once('cabecera.php')  
 ?>
-
-
 			<h3>Add your favorite albums!</h3>
 			<div class="row">
 				<div class="col-md-3">
 					<form method="post" id="album-form">
 						<div class="form-group">
 							<label for="name">Name:</label>
-							<input type="text" class="form-control" id="name" name="name" required>
+							<input type="text" class="form-control" id="name" name="name" required  <?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?> >
 						</div>
 						<div class="form-group">
 							<label>Artist:</label>
 							<div class="selDiv">
-								<select name="artist" id="artist_select" class="form-control" required>
+								<select name="artist" id="artist_select" class="form-control" required <?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 									<option></option> <!--editable select debe al menos una opcion al momento de hacer focus-->
 								</select>
 								<small>You can type if it doesn't exist.</small>
@@ -25,23 +23,28 @@ require_once('cabecera.php')
 						</div> -->
 						<div class="form-group">
 							<label for="year">Year:</label>
-							<input type="number" class="form-control" id="year" name="year" required>
+							<input type="number" class="form-control" id="year" name="year" required <?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 						</div>
 						<div class="form-group">
 							<p>Score:</p>
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i>" required>
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i>" required 
+								<?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 								  <label><i class='fa-solid fa-star text-warning'></i></label><br>
 
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" 
+								<?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" 
+								<?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" 
+								<?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 								
-								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>">
+								  <input type="radio" name="score" value="<i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i>" 
+								<?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
 								  <label><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i><i class='fa-solid fa-star text-warning'></i></label><br>
 							</div>
 						<!-- <div class="form-group row">
@@ -58,9 +61,9 @@ require_once('cabecera.php')
 									Add Album
 								</button>
 								<?php else: ?>
-								<a id="open-login" class="btn btn-success">
+								<a id="open-login" class="btn btn-success" title="You have to log in first">
 									Add Album
-								</a>
+								</a></br>
 								<?php endif; ?>
 							</div>
 						</div>
@@ -79,7 +82,9 @@ require_once('cabecera.php')
 							<col span="1" style="width: 5%;">
 							<col span="1" style="width: 2%;">
 							<col span="1" style="width: 10%;">
-							<col span="1" style="width: 5%;">
+							<?php if(isset($_SESSION['user'])): ?>
+								<col span="1" style="width: 5%;">
+							<?php endif;?>
     						</colgroup>
 								<thead>
 									<tr>
@@ -88,7 +93,9 @@ require_once('cabecera.php')
 										<th>Artist</th>
 										<th>Year</th>
 										<th>Score</th>
+										<?php if(isset($_SESSION['user'])): ?>
 										<th class="no-sort"></th>
+										<?php endif;?>
 									</tr>
 								</thead>
 								<tbody>
@@ -103,6 +110,7 @@ require_once('cabecera.php')
 										<td><?= $album['artist']?></td>
 										<td><?= $album['year']?></td>
 										<td><?= $album['score']?></td>
+										<?php if(isset($_SESSION['user'])): ?>
 										<td>
 										<a href="edit.php?id=<?=$album['id']?>" class="edit-album"><i class="fas fa-edit"></i></a>
 											<!-- <a href="edit.php" class="edit-album" id="<?=$album['id']?>">
@@ -114,6 +122,7 @@ require_once('cabecera.php')
 										</td>
 									</tr>
 								<?php
+										endif;
 										endwhile;
 									endif;
 								?>

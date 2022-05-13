@@ -7,7 +7,7 @@
     <head>
 		
 
-        <title>Select</title>
+        <title>EXAMEN DIAGNOSTICO - Darnell</title>
 		<link type="text/css" rel="stylesheet" href="style.css" />
 		<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

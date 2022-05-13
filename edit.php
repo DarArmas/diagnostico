@@ -6,14 +6,10 @@ require_once('cabecera.php');
 
 <?php 
                 $album = getAlbum($connect, $_GET['id']);
-                if(!isset($album['id'])){
+                if(!isset($album['id']) || !isset($_SESSION['user'])){
                     header("Location: index.php");   
                 }
-
 ?> 
-
-
-
 			<h3>Edit album <?=$album['name']?></h3>
 			<div class="row">
 				<div class="col-md-3">
