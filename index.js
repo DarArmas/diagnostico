@@ -52,34 +52,24 @@ $(document).ready(function(){
 		listArtists();
 	});
 
-	// $('#artist_select').on('change', function () {
-    //     $('#artist_string').val($('#artist_select').val());
-    // });
-
-	// $('#artist_select').on('focusout', function () {
-    //     $('#artist_string').val($('#artist_select').val());
-    // });
-
-	//submit - agregar herramienta a la lista
+	//submit
 	$('#album-form').on('submit', function(e){
 		e.preventDefault();
 		const data = $(this).serialize();
-		
-		// const data = {
-        //     artist_selected: $('#artist_select').val()
-        // };
 		$.ajax({
 				url:"create.php",
 				method:"POST",
 				data: data,
-				//enviar el codigo o serie de 
 				error: function() {
-					toastr.error('Hubo un error en la parte del servidor', 'Error', {timeOut: 3000});
+					toastr.error('There was a problem with the server', 'Error', {timeOut: 3000});
 					return false;
 				},
 				success:function(response)
 				{
+					toastr.success(response, 'Success', {timeOut: 3000});
 					console.log(response);
+					$('#album-form')[0].reset();
+					table.DataTable().ajax.reload(); //cuando ingrese datos, que se actualice la tabla
 				},
 			});
 		}

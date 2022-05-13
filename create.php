@@ -27,8 +27,6 @@ if(isset($_POST)){
             echo "Album added to your list";
         }
     }
-
-    //echo "Album added to your list";
  }
 
 ?>
