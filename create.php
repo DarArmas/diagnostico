@@ -1,7 +1,8 @@
 <?php
 if(isset($_POST)){
     require_once('database_connection.php');
-
+    require_once('helper.php');
+    
     $name = isset($_POST['name']) ? mysqli_real_escape_string($connect, $_POST['name']) : false;
     $artist_string = isset($_POST['artist']) ? strtolower(mysqli_real_escape_string($connect, $_POST['artist'])) : false;
     $year = isset($_POST['year']) ? mysqli_real_escape_string($connect, $_POST['year']) : false;
@@ -24,12 +25,7 @@ if(isset($_POST)){
         $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', NULL);";
         $save = mysqli_query($connect, $sql);
         if($save){
-            $sql = "SELECT albums.name, artists.name AS artist, albums.year, albums.score, albums.image FROM albums INNER JOIN artists ON albums.artist_id = artists.id";
-            $results = mysqli_query($connect, $sql);
-            $albums = array();
-            if($results && mysqli_num_rows($results) >= 1){
-                $albums = $results;
-            }
+            $albums = fetchAlbums($connect);
             $table = '';
                 if(!empty($albums)){
                     while($album = mysqli_fetch_assoc($albums)){
@@ -51,7 +47,6 @@ if(isset($_POST)){
                     }
                 }
             echo $table;
-
         }
     }
  }

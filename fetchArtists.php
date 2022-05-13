@@ -16,7 +16,7 @@ $json = array();
 while($row = mysqli_fetch_array($result)){
     $json[] = array(
         'id' => $row['id'],
-        'name' => $row['name'],
+        'name' => ucfirst($row['name']),
     );    
 }
 

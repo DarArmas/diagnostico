@@ -1,6 +1,7 @@
 <?php
 	date_default_timezone_set('America/Monterrey');
 	require_once('database_connection.php');
+	require_once('helper.php');    
 ?>
 
 <html>
@@ -116,15 +117,9 @@
 								</thead>
 								<tbody>
 								<?php 
-									$sql = "SELECT albums.name, artists.name AS artist, albums.year, albums.score, albums.image FROM albums INNER JOIN artists ON albums.artist_id = artists.id";
-									$results = mysqli_query($connect, $sql);
-									$albums = array();
-									if($results && mysqli_num_rows($results) >= 1){
-										$albums = $results;
-									}
+									$albums = fetchAlbums($connect);
 										if(!empty($albums)):
 											while($album = mysqli_fetch_assoc($albums)):
-												
 									?>
 									<tr>
 										<td></td>
