@@ -131,7 +131,7 @@
 											<a href="edit.php" class="edit-album">
 												<i class="fas fa-edit"></i>
 											</a>
-											<a href="delete.php" class="delete-album">
+											<a href="delete.php" class="delete-album" id="<?=$album['id']?>">
 												<i class="text-danger fas fa-trash"></i>
 											</a>
 										</td>

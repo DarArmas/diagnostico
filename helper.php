@@ -10,17 +10,18 @@ function fetchAlbums($connect){
 }
 
 
-function getAlbum($conexion,$id){
-    $sql= "SELECT e.*, c.nombre AS 'categoria', CONCAT(u.nombre,' ',u.apellidos) AS usuario FROM entradas e INNER JOIN categorias c ON e.categoria_id = c.id ".
-            "INNER JOIN usuarios u ON e.usuario_id = u.id ".
-            "WHERE e.id = $id";
-    $entrada = mysqli_query($conexion, $sql);
+function getAlbum($connect,$id){
+    $sql= "SELECT albums.*, artists.name AS artist FROM albums ".
+            "INNER JOIN artists ON albums.artist_id = artists.id ".
+            "WHERE albums.id = $id";
+
+    $album = mysqli_query($connect, $sql);
     
-    $resultado = array();
-    if($entrada && mysqli_num_rows($entrada) >= 1){
-        $resultado = mysqli_fetch_assoc($entrada);
+    $return = array();
+    if($album && mysqli_num_rows($album) >= 1){
+        $return = mysqli_fetch_assoc($album);
     }
     
-    return $resultado;
+    return $return;
 }
 ?>
