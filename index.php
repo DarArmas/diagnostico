@@ -18,9 +18,6 @@ require_once('cabecera.php')
 								<small>You can type if it doesn't exist.</small>
 							</div>
 						</div>
-						<!-- <div class="form-group">
-							<input type="hidden" class="form-control" id="artist_string" name="artist_string" required>
-						</div> -->
 						<div class="form-group">
 							<label for="year">Year:</label>
 							<input type="number" class="form-control" id="year" name="year" required <?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>>
@@ -82,7 +79,7 @@ require_once('cabecera.php')
 						<div class="table-responsive" >
 							<table class="table table-striped table-bordered" id="data-table" >
 							<colgroup>
-							<col span="1" style="width: 15%;">
+							<col span="1" style="width: 1%;">
 							<col span="1" style="width: 15%;">
 							<col span="1" style="width: 5%;">
 							<col span="1" style="width: 2%;">
@@ -108,9 +105,10 @@ require_once('cabecera.php')
 									$albums = fetchAlbums($connect);
 										if(!empty($albums)):
 											while($album = mysqli_fetch_assoc($albums)):
+												$image = !empty($album['image']) ? $album['image'] : 'default.jpg';
 									?>
 									<tr>
-										<td></td>
+										<td><img src="/examen-diagnostico/assets/images/<?= $image ?>" height="100px"/></td>
 										<td><?= $album['name']?></td>
 										<td><?= $album['artist']?></td>
 										<td><?= $album['year']?></td>

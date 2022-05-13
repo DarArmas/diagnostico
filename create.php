@@ -45,7 +45,12 @@ if(isset($_POST)){
         }
     
         if(!empty($name) && !empty($artist) && !empty($year) && !empty($score)){
-            $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', '$photo');";
+            if(!empty($photo)){
+                $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', '$photo');";
+            }else{
+                $sql= "INSERT INTO albums VALUES(NULL, '$name', $artist, '$year', '$score', NULL);";
+            }
+            
             $save = mysqli_query($connect, $sql);
             if($save){
                 $albums = fetchAlbums($connect);
