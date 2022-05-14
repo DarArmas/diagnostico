@@ -29,7 +29,7 @@
 	 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>  
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.8/js/fileinput.min.js" integrity="sha512-cp6gW0UKPFR63zDk2rrGFtTyFo+VXo3VYWPOVh53Zb9gXYH8weGogFhKgkb5zski616au/uX6uMryLcaHis9MA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	  	
+	   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	</head>
     <body>
