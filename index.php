@@ -47,7 +47,7 @@ require_once('includes/cabecera.php')
 						<div class="form-group row">
 							<div>
 							<label for="image">Image: </label>
-								<input type="file" name="image" id="image" data-initial-preview="" />
+								<input type="file" name="image" id="image" data-initial-preview="" <?php echo (!isset($_SESSION['user']) ? "disabled" : '') ?>/>
 							</div>
 						</div>
 						<div class="row">
