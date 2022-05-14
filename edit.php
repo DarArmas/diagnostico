@@ -1,6 +1,6 @@
 <?php
 	// require_once('helper.php');
-require_once('cabecera.php');
+require_once('includes/cabecera.php');
 ?>
 
 <?php 
@@ -12,7 +12,7 @@ require_once('cabecera.php');
 				$image_route = './assets/images/'.$image;
 ?> 
 			<h3>Edit album: <?=$album['name']?></h3>
-			<div class="row">
+			<div class="row" style="min-height: 1000px">
 				<div class="col-md-3">
 					<form  id="album-form-edit" action="create.php?edit=<?=$album['id']?>" method="post" enctype="multipart/form-data">
 						<div class="form-group">
@@ -155,5 +155,4 @@ require_once('cabecera.php');
 			</div>
 		</div>
     </body>
-</html>
-<script src="index.js"></script>
+<?php require_once 'includes/footer.php'?>

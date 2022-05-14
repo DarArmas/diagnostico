@@ -1,5 +1,5 @@
 <?php
-require_once('cabecera.php')  
+require_once('includes/cabecera.php')  
 ?>
 			<h3>Add your favorite albums!</h3>
 			<div class="row">
@@ -139,5 +139,4 @@ require_once('cabecera.php')
 			</div>
 		</div>
     </body>
-</html>
-<script src="index.js"></script>
+<?php require_once 'includes/footer.php'?>

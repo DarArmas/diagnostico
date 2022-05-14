@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	$(document).tooltip();
-	
 	$('#artist_select').editableSelect();
 	var table = $('#data-table').DataTable({
 		columnDefs: [
@@ -44,7 +43,6 @@ $(document).ready(function(){
 			}
         	});
 	}
-
 
 	//list artists 
 	$(document).on('click', '#artist_select', function(e){
@@ -115,33 +113,8 @@ $(document).ready(function(){
 					   $('#data-table tbody').html(response);
 					   table = $('#data-table').DataTable();
 				   },
-			   });s
+			   });
             }
         });
-
-	// 	 if(confirm('Are you sure you want to delete this album')){
-	// 	 let id = $(this).attr('id');
-	// 	 let action = $(this).attr('href');
-	// 	 $.ajax({
-	// 		url: action,
-	// 		method:"POST",
-	// 		data: {id:id},
-	// 		error: function() {
-	// 			toastr.error('There was a problem with the server', 'Error', {timeOut: 3000});
-	// 			return false;
-	// 		},
-	// 		success:function(response)
-	// 		{
-	// 			toastr.success('Album deleted', 'Success', {timeOut: 3000});
-	// 			table.destroy();
-	// 			$('#data-table tbody').html(response);
-	// 			table = $('#data-table').DataTable();
-	// 		},
-	// 	});
-	//  }
 	});
-
-    
-
-
 });
